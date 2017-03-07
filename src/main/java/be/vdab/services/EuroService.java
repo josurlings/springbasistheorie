@@ -1,0 +1,23 @@
+package be.vdab.services;
+
+import java.math.BigDecimal;
+
+import be.vdab.restclients.KoersenClient;
+
+public class EuroService 
+{
+	private final KoersenClient koersenClient; 
+	
+	public EuroService(KoersenClient koersenClient) 
+	{ 
+		this.koersenClient = koersenClient;
+	}
+	
+	public BigDecimal naarDollar(BigDecimal euro)
+	{
+		System.out.println(koersenClient.getDollarKoers());
+		return euro.multiply(koersenClient.getDollarKoers())
+				.setScale(2, BigDecimal.ROUND_HALF_UP);
+	}
+		
+}

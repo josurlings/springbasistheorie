@@ -1,6 +1,10 @@
 package be.vdab;
 
+import java.math.BigDecimal;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import be.vdab.services.EuroService;
 
 public class Main
 {
@@ -21,6 +25,26 @@ public class Main
 			System.out.println(objectA.getDefaultTaalEnLand().getDisplayName());
 			System.out.println("Bestand bestaat: " + objectA.getImportData().exists());
 			System.out.println(objectA.getDefaultBladRichting());
+			System.out.println(objectA.getWebMasterEMailAdres());
+			System.out.println(objectA.getWebsiteGestart());
+						
+			ClassB objectB = context.getBean(ClassB.class);
+			System.out.println(objectB.getTelefoonNrHelpDesk());
+			System.out.println(objectB.getAantalPogingenUpdateKlant());
+			
+			HelpdeskMedewerker helpdeskMedewerker = context.getBean(HelpdeskMedewerker.class);
+			System.out.println(helpdeskMedewerker.toString());
+			
+			Teller teller1 = context.getBean("teller1", Teller.class);
+			Teller teller2 = context.getBean("teller2", Teller.class);
+			teller1.verhoog();
+			teller2 = context.getBean("teller2", Teller.class);
+			teller1.verhoog();
+			teller2.verhoog();
+			teller2 = context.getBean("teller2", Teller.class);
+			teller2.verhoog();
+				
+			System.out.println(context.getBean(EuroService.class).naarDollar(BigDecimal.valueOf(2)));
 		}
 	}
 	
