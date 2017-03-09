@@ -67,6 +67,7 @@ class='org.springframework.context.support.ConversionServiceFactoryBean'>
 <bean id='teller1' class='be.vdab.Teller'/> 
 <bean id='teller2' class='be.vdab.Teller' scope='prototype'/>
 
+<!-- 
 <bean id='yahooKoersenClient' class='be.vdab.restclients.YahooKoersenClient'>
 <constructor-arg
 value='http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&amp;f=l1'/>
@@ -78,5 +79,8 @@ value='http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml'/>
 <bean id='euroService' class='be.vdab.services.EuroService'>
 <constructor-arg ref='ecbKoersenClient'/> 
 </bean>
+-->
+<import resource='restclients.xml'/>
+<import resource='services.xml'/>
 
 </beans>

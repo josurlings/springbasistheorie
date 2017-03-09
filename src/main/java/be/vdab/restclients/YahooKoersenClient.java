@@ -7,12 +7,21 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class YahooKoersenClient implements KoersenClient
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+
+@Component
+@Qualifier("Yahoo")
+class YahooKoersenClient implements KoersenClient
 {
 	private static final Logger LOGGER =
 			Logger.getLogger(YahooKoersenClient.class.getName());
 	private final URL url;
-	public YahooKoersenClient(URL url)
+	
+//	public YahooKoersenClient(URL url)
+	public YahooKoersenClient(@Value("${yahooKoersenURL}") URL url)
 	{ 
 		this.url = url;
 	}
