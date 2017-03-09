@@ -1,12 +1,14 @@
 package be.vdab;
 
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+//import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import be.vdab.restclients.RestClientsConfig;
-import be.vdab.services.EuroService;
-import be.vdab.services.ServicesConfig;
+import be.vdab.gaming.Spelletje;
+//import be.vdab.restclients.RestClientsConfig;
+//import be.vdab.services.EuroService;
+//import be.vdab.services.ServicesConfig;
 
 public class Main
 {
@@ -18,7 +20,7 @@ public class Main
 	//	new ClassPathXmlApplicationContext("container.xml")) 
 		new ClassPathXmlApplicationContext("restclients.xml", "services.xml")) 
 		{
-	*/
+
 		try (AnnotationConfigApplicationContext context = 
 				new AnnotationConfigApplicationContext(
 				new Class[] {ServicesConfig.class, RestClientsConfig.class})) 
@@ -54,10 +56,18 @@ public class Main
 			teller2.verhoog();
 			teller2 = context.getBean("teller2", Teller.class);
 			teller2.verhoog();
-			
-	*/
+
 			System.out.println(context.getBean(EuroService.class).naarDollar(BigDecimal.valueOf(2)));
 		}
 	}
+
+	*/
+		
+		try (ClassPathXmlApplicationContext context =
+				new ClassPathXmlApplicationContext("container.xml"))
+		{
+				System.out.println(context.getBean(Spelletje.class).getAantalVijanden());
+		}
 	
-}
+	}
+	}
